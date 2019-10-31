@@ -1,4 +1,4 @@
-import { CHECK, UNCHECK, ADD,CHANGE } from './../types';
+import { CHECK, UNCHECK, ADD, CHANGE, SET_POSTS_LOADING, SET_POSTS_ERROR, SET_POSTS_SUCCESS, SEARCH_CHANGE } from './../types';
 
 const initialTodos = [
     {
@@ -8,7 +8,7 @@ const initialTodos = [
         done: false,
         text: "task 2"
     }, {
-        done: false,
+        sdone: false,
         text: "task 3"
     }, {
         done: true,
@@ -35,10 +35,36 @@ export const listReducer = (todos = initialTodos, action) => {
     }
 }
 export const inputReducer = (value = '', action) => {
-    switch(action.type){
+    switch (action.type) {
         case CHANGE:
             return action.payload
-        default: 
+        default:
             return value
+    }
+}
+
+export const searchReducer = (value = '', action) => {
+    switch (action.type) {
+        case SEARCH_CHANGE:
+            return action.payload
+        default:
+            return value
+    }
+}
+
+const initialPosts = {
+    status: 'LOADING',
+    data: []
+}
+export const postsReducer = (posts = initialPosts, action) => {
+    switch (action.type) {
+        case SET_POSTS_SUCCESS:
+            return { status: 'SUCCESS', data: action.payload }
+        case SET_POSTS_LOADING:
+            return { status: 'LOADING', data: [] }
+        case SET_POSTS_ERROR:
+            return { status: 'ERROR', data: [] }
+        default:
+            return posts
     }
 }

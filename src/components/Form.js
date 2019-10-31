@@ -13,9 +13,9 @@ class Form extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={(e) => this.addNewToDo(e, "abc")}>
-                <input onChange={(e)=>this.handleInputChange(e)} value={this.props.inputValue} type="text" />
-                <input type="submit" />
+            <form onSubmit={(e) => this.addNewToDo(e)}>
+                <input placeholder="Description of a new task here..." className="searchInput" onChange={(e)=>this.handleInputChange(e)} value={this.props.inputValue} type="text" />
+                <input className="submitButton" type="submit" />
             </form>
         )
     }

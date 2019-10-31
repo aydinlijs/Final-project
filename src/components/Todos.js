@@ -1,15 +1,14 @@
 import React from 'react';
 import Form from './Form';
-import DoneTodos from './DoneTodos';
-import NotDoneTodos from './NotDoneTodos';
+import List from './List';
 
 class Todos extends React.Component{
     render(){
         return(
             <div>
                 <Form/>
-                <DoneTodos/>
-                <NotDoneTodos/>
+                <List done={true}/>
+                <List done={false}/>
             </div>
         )
     }
